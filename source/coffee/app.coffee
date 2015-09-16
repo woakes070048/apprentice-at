@@ -7,12 +7,12 @@ class Apprenticeship
     @hidden = false
 
   # Hides individual apprenticeships
-  hide: -> 
+  hide: ->
     @$el.hide()
     @hidden = true
 
   # Shows individual apprenticeships
-  show: -> 
+  show: ->
     @$el.show()
     @hidden = false
 
@@ -63,7 +63,7 @@ $ ->
 
   # Adds a click handler to the filter buttons
   $('.category__item').on 'click', (e) ->
-    if e.preventDefault 
+    if e.preventDefault
       e.preventDefault()
     else
       event.returnValue = false
@@ -75,3 +75,12 @@ $ ->
 
     # Filters visible apprenticeships based on the data attribute of clicked button
     apprenticeships.filter($(@).data('filters'))
+
+  $('input[type="radio"]').on 'click', (e) ->
+    console.log "clicked"
+    if $('#compensation_no').is(':checked')
+      $('#compensation_alert').removeClass('hidden')
+      $('#submit_form').attr('disabled','disabled')
+    else
+      $('#compensation_alert').addClass('hidden')
+      $('#submit_form').removeAttr('disabled')
